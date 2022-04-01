@@ -41,7 +41,7 @@ public class PhoneNumberService implements LineProcessor {
             sb.append("+")
                     .append(stringNumber.charAt(0))
                     .append(" (")
-                    .append(stringNumber, 1, 3)
+                    .append(stringNumber, 1, 4)
                     .append(") ")
                     .append(stringNumber, 4, 7)
                     .append("-")

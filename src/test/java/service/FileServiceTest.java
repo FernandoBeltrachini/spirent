@@ -19,18 +19,27 @@ public class FileServiceTest {
 
     private static final String VALID_PATH = "src/test/java/resources/test.txt";
 
+
+    /**
+     * Test read file should retrieve existing file.
+     */
     @Test
-    public void testReadFileShouldRunOk(){
+    public void testReadFileShouldRunOk() {
         File file = fileService.readFile(VALID_PATH);
 
         assertNotNull(file);
         assertTrue(file.exists());
     }
 
+
+    /**
+     * Test read null path should retrieve null file.
+     */
     @Test
-    public void testReadFileFailDueNullPointerException(){
+    public void testReadFileFailDueNullPointerException() {
         File file = fileService.readFile(null);
 
         assertNull(file);
     }
+
 }

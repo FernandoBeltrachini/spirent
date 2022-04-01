@@ -5,9 +5,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Objects;
+
+import static java.util.Objects.nonNull;
+import static java.util.Objects.requireNonNull;
 
 public class FileService {
+
+    public static final String ALLOWED_EXTENSIONS = ".txt";
 
     public File readFile(String path) {
         try {
@@ -19,9 +23,9 @@ public class FileService {
     }
 
     public void processFile(File file, LineProcessor lineProcessor){
-        if (file.exists()) {
+        if (nonNull(file) && file.exists()) {
             if (file.isFile()) {
-                if (file.getPath().endsWith(".txt")) {
+                if (file.getPath().endsWith(ALLOWED_EXTENSIONS)) {
                     BufferedReader br = null;
                     try {
                         br = new BufferedReader(new FileReader(file));
@@ -42,7 +46,7 @@ public class FileService {
                     }
                 }
             } else {
-                Arrays.stream(Objects.requireNonNull(file.listFiles())).forEach(f -> processFile(f, lineProcessor));
+                Arrays.stream(requireNonNull(file.listFiles())).forEach(f -> processFile(f, lineProcessor));
             }
         }
     }
