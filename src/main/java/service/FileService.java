@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 
+import static java.util.Arrays.stream;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
@@ -46,7 +46,7 @@ public class FileService {
                     }
                 }
             } else {
-                Arrays.stream(requireNonNull(file.listFiles())).forEach(f -> processFile(f, lineProcessor));
+                stream(requireNonNull(file.listFiles())).forEach(f -> processFile(f, lineProcessor));
             }
         }
     }
